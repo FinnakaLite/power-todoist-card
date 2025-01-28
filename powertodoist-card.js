@@ -23,7 +23,18 @@ const todoistColors = {
     "grey"        : "rgb(184, 184, 184)",
     "taupe"       : "rgb(204, 172, 147)",
 }
-  
+
+function formatDateWithWeekday(dateString, format = "dd-mmm") {
+    const date = new Date(dateString);
+    const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const weekday = weekdays[date.getDay()];
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are zero-based
+    
+    // Adjust the format to include the weekday
+    return `${weekday} ${day}-${month}`;
+}
+
 
 function replaceMultiple(str2Replace, mapReplaces, was, input){
     mapReplaces["%was%"] = was;
@@ -999,11 +1010,11 @@ class PowerTodoistCard extends LitElement {
                                     : html`` }
                                 ${this.renderLabels(item, 
                                     // labels:
-                                    [this.myConfig.show_dates && item.due ? dateFormat(item.due.date, "🗓 " + (this.config.date_format ? this.config.date_format : "dd-mmm H'h'MM")) : [],
-                                     ...item.labels].filter(String), // filter removes the empty []s
+                                    [this.myConfig.show_dates && item.due ? formatDateWithWeekday(item.due.date, (this.config.date_format ? this.config.date_format : "dd-mmm")) : [],
+                                    ...item.labels].filter(String), // filter removes the empty []s
                                     // exclusions:
                                     [...(cardLabels.length == 1 ? cardLabels : []), // card labels excluded unless more than one
-                                     ...item.labels.filter(l => l.startsWith("_"))], // "_etc" labels excluded
+                                    ...item.labels.filter(l => l.startsWith("_"))], // "_etc" labels excluded
                                     label_colors) }
                             </div>
                             ${(this.config.show_item_delete === undefined) || (this.config.show_item_delete !== false)
