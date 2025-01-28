@@ -1200,27 +1200,28 @@ class PowerTodoistCard extends LitElement {
                 font-weight: 100;
                 line-height: 13px;
                 padding: 0px 0px;
-                margin-top: 6px;
-                margin-bottom: 6px;
+                margin-top: 12px;
+                margin-bottom: 12px;
             }
             ul.labels li {
                 display: inline;
                 color: #CCCCCC;
                 float: left;
-                margin: -5px 2px 3px 0px;
-                height: 15px;
+                margin: -5px 5px 3px 0px;
+                height: 22px;
                 border-radius: 4px;
             }
 
             ul.labels li span {
                 /* background: url(label_front.gif) no-repeat center left;*/
-                font-size: 11px;
+                font-size: 20px;
                 font-weight: normal;
                 white-space: nowrap;
                 padding: 0px 3px;
                 color: white;
                 vertical-align: top;
                 float: left;
+                margin-top: 0.5vh
             }
 
             ul.labels li a {
