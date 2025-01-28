@@ -1145,7 +1145,7 @@ class PowerTodoistCard extends LitElement {
             }
             
             .powertodoist-item-text, .powertodoist-item-text > span, .powertodoist-item-text > div {
-                font-size: 16px;
+                font-size: 20px;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
